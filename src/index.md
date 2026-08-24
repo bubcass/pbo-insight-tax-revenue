@@ -24,7 +24,7 @@ const changeSince = (yearsAgo) => {
   const comparisonTotal = totalForYear(latestYear - yearsAgo);
   return comparisonTotal ? (latestTotal - comparisonTotal) / comparisonTotal : 0;
 };
-const euroBillions = (value) => `€${d3.format(".1f")(value / 1000)}bn`;
+const euroBillions = (value) => `€${d3.format(".1f")(value / 1000)} billion`;
 const overviewDownloadRows = [
   ...rows.map((d) => ({
     Dataset: "Tax head",

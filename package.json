@@ -1,0 +1,19 @@
+{
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build:data": "node src/data/transformers/build-tax-derived.mjs",
+    "build": "observable build",
+    "dev": "observable preview",
+    "observable": "observable"
+  },
+  "dependencies": {
+    "@observablehq/framework": "^1.13.4",
+    "@observablehq/plot": "^0.6.17",
+    "d3": "^7.9.0",
+    "d3-dsv": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

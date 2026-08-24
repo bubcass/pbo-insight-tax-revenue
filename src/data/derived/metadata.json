@@ -1,0 +1,57 @@
+{
+  "generated_at": "2026-07-09T19:10:09.155Z",
+  "years": {
+    "min_taxhead_year": 2005,
+    "max_taxhead_year": 2025,
+    "latest_sector_year": 2025,
+    "latest_county_year": 2025
+  },
+  "taxheads": [
+    "Capital Taxes",
+    "Consumption Taxes",
+    "Corporation Tax",
+    "Income Taxes",
+    "Local Property Tax",
+    "Stamp Duties",
+    "Total Net Receipts"
+  ],
+  "sectors": [
+    "Accommodation & food services",
+    "Administrative & support service activities",
+    "Agriculture, forestry & fishing",
+    "Construction",
+    "Education",
+    "Financial & insurance activities",
+    "Human health & social work activities",
+    "Information & communication",
+    "Manufacturing",
+    "Mining & Utilities",
+    "Other Activities",
+    "Professional, scientific & technical activities",
+    "Public administration & defence",
+    "Real estate activities",
+    "Transportation & Storage",
+    "Wholesale & retail trade; repair of motor vehicles & motorcycles"
+  ],
+  "sector_tax_types": [
+    "Capital Gains Tax",
+    "Corporation Tax",
+    "Income Taxes",
+    "Total",
+    "VAT"
+  ],
+  "county_tax_types": [
+    "Capital Gains Tax",
+    "Corporation Tax",
+    "Income Taxes",
+    "Total",
+    "VAT"
+  ],
+  "source_files": [
+    "net-receipts-taxhead.csv",
+    "net-receipts-sector.csv",
+    "net-receipts-county.csv",
+    "geo/counties.geojson"
+  ],
+  "county_normalisation_example": "DUBLIN"
+}

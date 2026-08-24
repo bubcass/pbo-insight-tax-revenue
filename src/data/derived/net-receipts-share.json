@@ -1,0 +1,758 @@
+[
+  {
+    "Year": 2025,
+    "Taxhead": "Income Taxes",
+    "Amount": 36556,
+    "Share": 34.1
+  },
+  {
+    "Year": 2025,
+    "Taxhead": "Corporation Tax",
+    "Amount": 34667,
+    "Share": 32.4
+  },
+  {
+    "Year": 2025,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 30077,
+    "Share": 28.1
+  },
+  {
+    "Year": 2025,
+    "Taxhead": "Stamp Duties",
+    "Amount": 1897,
+    "Share": 1.8
+  },
+  {
+    "Year": 2025,
+    "Taxhead": "Capital Taxes",
+    "Amount": 3256,
+    "Share": 3
+  },
+  {
+    "Year": 2025,
+    "Taxhead": "Local Property Tax",
+    "Amount": 670,
+    "Share": 0.6
+  },
+  {
+    "Year": 2024,
+    "Taxhead": "Income Taxes",
+    "Amount": 35088,
+    "Share": 32.6
+  },
+  {
+    "Year": 2024,
+    "Taxhead": "Corporation Tax",
+    "Amount": 39061,
+    "Share": 36.3
+  },
+  {
+    "Year": 2024,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 28695,
+    "Share": 26.7
+  },
+  {
+    "Year": 2024,
+    "Taxhead": "Stamp Duties",
+    "Amount": 1693,
+    "Share": 1.6
+  },
+  {
+    "Year": 2024,
+    "Taxhead": "Capital Taxes",
+    "Amount": 2562,
+    "Share": 2.4
+  },
+  {
+    "Year": 2024,
+    "Taxhead": "Local Property Tax",
+    "Amount": 573,
+    "Share": 0.5
+  },
+  {
+    "Year": 2023,
+    "Taxhead": "Income Taxes",
+    "Amount": 32910,
+    "Share": 37.5
+  },
+  {
+    "Year": 2023,
+    "Taxhead": "Corporation Tax",
+    "Amount": 23842,
+    "Share": 27.2
+  },
+  {
+    "Year": 2023,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 26561,
+    "Share": 30.3
+  },
+  {
+    "Year": 2023,
+    "Taxhead": "Stamp Duties",
+    "Amount": 1772,
+    "Share": 2
+  },
+  {
+    "Year": 2023,
+    "Taxhead": "Capital Taxes",
+    "Amount": 2154,
+    "Share": 2.5
+  },
+  {
+    "Year": 2023,
+    "Taxhead": "Local Property Tax",
+    "Amount": 556,
+    "Share": 0.6
+  },
+  {
+    "Year": 2022,
+    "Taxhead": "Income Taxes",
+    "Amount": 30730,
+    "Share": 37.1
+  },
+  {
+    "Year": 2022,
+    "Taxhead": "Corporation Tax",
+    "Amount": 22645,
+    "Share": 27.3
+  },
+  {
+    "Year": 2022,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 24870,
+    "Share": 30
+  },
+  {
+    "Year": 2022,
+    "Taxhead": "Stamp Duties",
+    "Amount": 1820,
+    "Share": 2.2
+  },
+  {
+    "Year": 2022,
+    "Taxhead": "Capital Taxes",
+    "Amount": 2352,
+    "Share": 2.8
+  },
+  {
+    "Year": 2022,
+    "Taxhead": "Local Property Tax",
+    "Amount": 500,
+    "Share": 0.6
+  },
+  {
+    "Year": 2021,
+    "Taxhead": "Income Taxes",
+    "Amount": 26750,
+    "Share": 39.3
+  },
+  {
+    "Year": 2021,
+    "Taxhead": "Corporation Tax",
+    "Amount": 15323,
+    "Share": 22.5
+  },
+  {
+    "Year": 2021,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 21733,
+    "Share": 31.9
+  },
+  {
+    "Year": 2021,
+    "Taxhead": "Stamp Duties",
+    "Amount": 1495,
+    "Share": 2.2
+  },
+  {
+    "Year": 2021,
+    "Taxhead": "Capital Taxes",
+    "Amount": 2227,
+    "Share": 3.3
+  },
+  {
+    "Year": 2021,
+    "Taxhead": "Local Property Tax",
+    "Amount": 551,
+    "Share": 0.8
+  },
+  {
+    "Year": 2020,
+    "Taxhead": "Income Taxes",
+    "Amount": 22647,
+    "Share": 40
+  },
+  {
+    "Year": 2020,
+    "Taxhead": "Corporation Tax",
+    "Amount": 11833,
+    "Share": 20.9
+  },
+  {
+    "Year": 2020,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 18174,
+    "Share": 32.1
+  },
+  {
+    "Year": 2020,
+    "Taxhead": "Stamp Duties",
+    "Amount": 2094,
+    "Share": 3.7
+  },
+  {
+    "Year": 2020,
+    "Taxhead": "Capital Taxes",
+    "Amount": 1455,
+    "Share": 2.6
+  },
+  {
+    "Year": 2020,
+    "Taxhead": "Local Property Tax",
+    "Amount": 482,
+    "Share": 0.9
+  },
+  {
+    "Year": 2019,
+    "Taxhead": "Income Taxes",
+    "Amount": 22938,
+    "Share": 39
+  },
+  {
+    "Year": 2019,
+    "Taxhead": "Corporation Tax",
+    "Amount": 10887,
+    "Share": 18.5
+  },
+  {
+    "Year": 2019,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 21374,
+    "Share": 36.4
+  },
+  {
+    "Year": 2019,
+    "Taxhead": "Stamp Duties",
+    "Amount": 1514,
+    "Share": 2.6
+  },
+  {
+    "Year": 2019,
+    "Taxhead": "Capital Taxes",
+    "Amount": 1598,
+    "Share": 2.7
+  },
+  {
+    "Year": 2019,
+    "Taxhead": "Local Property Tax",
+    "Amount": 474,
+    "Share": 0.8
+  },
+  {
+    "Year": 2018,
+    "Taxhead": "Income Taxes",
+    "Amount": 21296,
+    "Share": 38.6
+  },
+  {
+    "Year": 2018,
+    "Taxhead": "Corporation Tax",
+    "Amount": 10387,
+    "Share": 18.8
+  },
+  {
+    "Year": 2018,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 19967,
+    "Share": 36.2
+  },
+  {
+    "Year": 2018,
+    "Taxhead": "Stamp Duties",
+    "Amount": 1463,
+    "Share": 2.7
+  },
+  {
+    "Year": 2018,
+    "Taxhead": "Capital Taxes",
+    "Amount": 1519,
+    "Share": 2.8
+  },
+  {
+    "Year": 2018,
+    "Taxhead": "Local Property Tax",
+    "Amount": 483,
+    "Share": 0.9
+  },
+  {
+    "Year": 2017,
+    "Taxhead": "Income Taxes",
+    "Amount": 19972,
+    "Share": 39.3
+  },
+  {
+    "Year": 2017,
+    "Taxhead": "Corporation Tax",
+    "Amount": 8201,
+    "Share": 16.2
+  },
+  {
+    "Year": 2017,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 19629,
+    "Share": 38.7
+  },
+  {
+    "Year": 2017,
+    "Taxhead": "Stamp Duties",
+    "Amount": 1195,
+    "Share": 2.4
+  },
+  {
+    "Year": 2017,
+    "Taxhead": "Capital Taxes",
+    "Amount": 1286,
+    "Share": 2.5
+  },
+  {
+    "Year": 2017,
+    "Taxhead": "Local Property Tax",
+    "Amount": 477,
+    "Share": 0.9
+  },
+  {
+    "Year": 2016,
+    "Taxhead": "Income Taxes",
+    "Amount": 19170,
+    "Share": 40
+  },
+  {
+    "Year": 2016,
+    "Taxhead": "Corporation Tax",
+    "Amount": 7352,
+    "Share": 15.3
+  },
+  {
+    "Year": 2016,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 18552,
+    "Share": 38.7
+  },
+  {
+    "Year": 2016,
+    "Taxhead": "Stamp Duties",
+    "Amount": 1179,
+    "Share": 2.5
+  },
+  {
+    "Year": 2016,
+    "Taxhead": "Capital Taxes",
+    "Amount": 1234,
+    "Share": 2.6
+  },
+  {
+    "Year": 2016,
+    "Taxhead": "Local Property Tax",
+    "Amount": 463,
+    "Share": 1
+  },
+  {
+    "Year": 2015,
+    "Taxhead": "Income Taxes",
+    "Amount": 18340,
+    "Share": 40.1
+  },
+  {
+    "Year": 2015,
+    "Taxhead": "Corporation Tax",
+    "Amount": 6873,
+    "Share": 15
+  },
+  {
+    "Year": 2015,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 17732,
+    "Share": 38.7
+  },
+  {
+    "Year": 2015,
+    "Taxhead": "Stamp Duties",
+    "Amount": 1276,
+    "Share": 2.8
+  },
+  {
+    "Year": 2015,
+    "Taxhead": "Capital Taxes",
+    "Amount": 1092,
+    "Share": 2.4
+  },
+  {
+    "Year": 2015,
+    "Taxhead": "Local Property Tax",
+    "Amount": 469,
+    "Share": 1
+  },
+  {
+    "Year": 2014,
+    "Taxhead": "Income Taxes",
+    "Amount": 17128,
+    "Share": 41.4
+  },
+  {
+    "Year": 2014,
+    "Taxhead": "Corporation Tax",
+    "Amount": 4617,
+    "Share": 11.2
+  },
+  {
+    "Year": 2014,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 16566,
+    "Share": 40
+  },
+  {
+    "Year": 2014,
+    "Taxhead": "Stamp Duties",
+    "Amount": 1679,
+    "Share": 4.1
+  },
+  {
+    "Year": 2014,
+    "Taxhead": "Capital Taxes",
+    "Amount": 895,
+    "Share": 2.2
+  },
+  {
+    "Year": 2014,
+    "Taxhead": "Local Property Tax",
+    "Amount": 493,
+    "Share": 1.2
+  },
+  {
+    "Year": 2013,
+    "Taxhead": "Income Taxes",
+    "Amount": 11822,
+    "Share": 34.8
+  },
+  {
+    "Year": 2013,
+    "Taxhead": "Corporation Tax",
+    "Amount": 4270,
+    "Share": 12.6
+  },
+  {
+    "Year": 2013,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 15559,
+    "Share": 45.8
+  },
+  {
+    "Year": 2013,
+    "Taxhead": "Stamp Duties",
+    "Amount": 1333,
+    "Share": 3.9
+  },
+  {
+    "Year": 2013,
+    "Taxhead": "Capital Taxes",
+    "Amount": 646,
+    "Share": 1.9
+  },
+  {
+    "Year": 2013,
+    "Taxhead": "Local Property Tax",
+    "Amount": 316,
+    "Share": 0.9
+  },
+  {
+    "Year": 2012,
+    "Taxhead": "Income Taxes",
+    "Amount": 11316,
+    "Share": 34.5
+  },
+  {
+    "Year": 2012,
+    "Taxhead": "Corporation Tax",
+    "Amount": 4215,
+    "Share": 12.8
+  },
+  {
+    "Year": 2012,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 15167,
+    "Share": 46.2
+  },
+  {
+    "Year": 2012,
+    "Taxhead": "Stamp Duties",
+    "Amount": 1426,
+    "Share": 4.3
+  },
+  {
+    "Year": 2012,
+    "Taxhead": "Capital Taxes",
+    "Amount": 696,
+    "Share": 2.1
+  },
+  {
+    "Year": 2012,
+    "Taxhead": "Local Property Tax",
+    "Amount": null,
+    "Share": 0
+  },
+  {
+    "Year": 2011,
+    "Taxhead": "Income Taxes",
+    "Amount": 10514,
+    "Share": 34
+  },
+  {
+    "Year": 2011,
+    "Taxhead": "Corporation Tax",
+    "Amount": 3500,
+    "Share": 11.3
+  },
+  {
+    "Year": 2011,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 14864,
+    "Share": 48.1
+  },
+  {
+    "Year": 2011,
+    "Taxhead": "Stamp Duties",
+    "Amount": 1383,
+    "Share": 4.5
+  },
+  {
+    "Year": 2011,
+    "Taxhead": "Capital Taxes",
+    "Amount": 659,
+    "Share": 2.1
+  },
+  {
+    "Year": 2011,
+    "Taxhead": "Local Property Tax",
+    "Amount": null,
+    "Share": 0
+  },
+  {
+    "Year": 2010,
+    "Taxhead": "Income Taxes",
+    "Amount": 9820,
+    "Share": 32.2
+  },
+  {
+    "Year": 2010,
+    "Taxhead": "Corporation Tax",
+    "Amount": 3944,
+    "Share": 12.9
+  },
+  {
+    "Year": 2010,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 15167,
+    "Share": 49.8
+  },
+  {
+    "Year": 2010,
+    "Taxhead": "Stamp Duties",
+    "Amount": 962,
+    "Share": 3.2
+  },
+  {
+    "Year": 2010,
+    "Taxhead": "Capital Taxes",
+    "Amount": 582,
+    "Share": 1.9
+  },
+  {
+    "Year": 2010,
+    "Taxhead": "Local Property Tax",
+    "Amount": null,
+    "Share": 0
+  },
+  {
+    "Year": 2009,
+    "Taxhead": "Income Taxes",
+    "Amount": 10701,
+    "Share": 33.3
+  },
+  {
+    "Year": 2009,
+    "Taxhead": "Corporation Tax",
+    "Amount": 3889,
+    "Share": 12.1
+  },
+  {
+    "Year": 2009,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 15747,
+    "Share": 49
+  },
+  {
+    "Year": 2009,
+    "Taxhead": "Stamp Duties",
+    "Amount": 1002,
+    "Share": 3.1
+  },
+  {
+    "Year": 2009,
+    "Taxhead": "Capital Taxes",
+    "Amount": 801,
+    "Share": 2.5
+  },
+  {
+    "Year": 2009,
+    "Taxhead": "Local Property Tax",
+    "Amount": null,
+    "Share": 0
+  },
+  {
+    "Year": 2008,
+    "Taxhead": "Income Taxes",
+    "Amount": 13196,
+    "Share": 32.1
+  },
+  {
+    "Year": 2008,
+    "Taxhead": "Corporation Tax",
+    "Amount": 5071,
+    "Share": 12.3
+  },
+  {
+    "Year": 2008,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 19277,
+    "Share": 46.9
+  },
+  {
+    "Year": 2008,
+    "Taxhead": "Stamp Duties",
+    "Amount": 1763,
+    "Share": 4.3
+  },
+  {
+    "Year": 2008,
+    "Taxhead": "Capital Taxes",
+    "Amount": 1767,
+    "Share": 4.3
+  },
+  {
+    "Year": 2008,
+    "Taxhead": "Local Property Tax",
+    "Amount": null,
+    "Share": 0
+  },
+  {
+    "Year": 2007,
+    "Taxhead": "Income Taxes",
+    "Amount": 13583,
+    "Share": 28.6
+  },
+  {
+    "Year": 2007,
+    "Taxhead": "Corporation Tax",
+    "Amount": 6393,
+    "Share": 13.5
+  },
+  {
+    "Year": 2007,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 20794,
+    "Share": 43.8
+  },
+  {
+    "Year": 2007,
+    "Taxhead": "Stamp Duties",
+    "Amount": 3244,
+    "Share": 6.8
+  },
+  {
+    "Year": 2007,
+    "Taxhead": "Capital Taxes",
+    "Amount": 3488,
+    "Share": 7.3
+  },
+  {
+    "Year": 2007,
+    "Taxhead": "Local Property Tax",
+    "Amount": null,
+    "Share": 0
+  },
+  {
+    "Year": 2006,
+    "Taxhead": "Income Taxes",
+    "Amount": 12375,
+    "Share": 27.2
+  },
+  {
+    "Year": 2006,
+    "Taxhead": "Corporation Tax",
+    "Amount": 6685,
+    "Share": 14.7
+  },
+  {
+    "Year": 2006,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 19402,
+    "Share": 42.6
+  },
+  {
+    "Year": 2006,
+    "Taxhead": "Stamp Duties",
+    "Amount": 3631,
+    "Share": 8
+  },
+  {
+    "Year": 2006,
+    "Taxhead": "Capital Taxes",
+    "Amount": 3442,
+    "Share": 7.6
+  },
+  {
+    "Year": 2006,
+    "Taxhead": "Local Property Tax",
+    "Amount": null,
+    "Share": 0
+  },
+  {
+    "Year": 2005,
+    "Taxhead": "Income Taxes",
+    "Amount": 11339,
+    "Share": 28.7
+  },
+  {
+    "Year": 2005,
+    "Taxhead": "Corporation Tax",
+    "Amount": 5503,
+    "Share": 13.9
+  },
+  {
+    "Year": 2005,
+    "Taxhead": "Consumption Taxes",
+    "Amount": 17742,
+    "Share": 44.9
+  },
+  {
+    "Year": 2005,
+    "Taxhead": "Stamp Duties",
+    "Amount": 2674,
+    "Share": 6.8
+  },
+  {
+    "Year": 2005,
+    "Taxhead": "Capital Taxes",
+    "Amount": 2231,
+    "Share": 5.6
+  },
+  {
+    "Year": 2005,
+    "Taxhead": "Local Property Tax",
+    "Amount": null,
+    "Share": 0
+  }
+]

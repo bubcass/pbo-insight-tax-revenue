@@ -1,5 +1,6 @@
 import * as d3 from "npm:d3";
 import {chartPalettes} from "../config/chart-palette.js";
+import {mobileTimelineScroll} from "./mobile-timeline-scroll.js";
 
 const COLORS = chartPalettes.pboCategorical;
 const euroBillions = (value) => `€${d3.format(".1f")(value / 1000)}bn`;
@@ -175,11 +176,9 @@ export function compositionStreamgraph(rows, {mode = "value", width = 1040} = {}
     legend.appendChild(item);
   }
 
-  const mobileHint = document.createElement("p");
-  mobileHint.className = "tax-chart__note tax-streamgraph__mobile-hint";
-  mobileHint.textContent = "Swipe horizontally to explore all years.";
+  const mobileHint = mobileTimelineScroll(shell);
 
   shell.append(svg.node(), tooltip);
-  figure.append(caption, shell, mobileHint, legend);
+  figure.append(caption, mobileHint, shell, legend);
   return figure;
 }

@@ -22,6 +22,10 @@
     --pbo-structure-border: #c9c8c4;
     --pbo-hover-border: #9a557c;
     --pbo-hover-surface: #f8f0f4;
+    --pbo-tax-capital-gains: #6b1448;
+    --pbo-tax-corporation: #ffbb00;
+    --pbo-tax-income: #ff6f61;
+    --pbo-tax-vat: #008080;
 }
 
 main.observablehq > .observablehq--block:has(> form[class^="inputs-"]) {
@@ -128,8 +132,39 @@ main.observablehq > .observablehq--block:has(> form[class^="inputs-"] input[type
 
 main.observablehq form[class^="inputs-"]:has(input[type="radio"]) > label:first-child {
     width: 100%;
-    color: var(--pbo-primary);
+    color: var(--gold);
     text-align: left;
+}
+
+.tax-sector-controls {
+    width: 100%;
+    max-width: var(--text-max);
+    margin: var(--space-2) auto var(--space-6);
+}
+
+.tax-sector-controls > .observablehq--block {
+    display: grid;
+    margin: 0 !important;
+    padding: 0 !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem 1.5rem;
+    align-items: end;
+}
+
+.tax-sector-controls form[class^="inputs-"]:has(input[type="radio"]) {
+    width: 100% !important;
+    justify-self: stretch;
+    justify-items: stretch;
+}
+
+.tax-sector-controls form[class^="inputs-"]:has(input[type="radio"]) > div {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-columns: unset;
+}
+
+.tax-sector-controls form[class^="inputs-"]:has(input[type="radio"]) > div > label {
+    min-height: 54px;
 }
 
 main.observablehq form[class^="inputs-"]:has(input[type="radio"]) > div > label {
@@ -248,6 +283,7 @@ main.observablehq form[class^="inputs-"]:has(input[type="radio"]) > div > label:
     --pbo-structure-border: #56534e;
     --pbo-hover-border: #c27da2;
     --pbo-hover-surface: #342a30;
+    --pbo-tax-capital-gains: #b25e84;
     --link: var(--pbo-primary);
     --link-hover: var(--pbo-primary-hover);
     --button-border: var(--pbo-hover-border);
@@ -280,6 +316,11 @@ main.observablehq form[class^="inputs-"]:has(input[type="radio"]) > div > label:
 @media (max-width: 720px) {
     main.observablehq > .observablehq--block:has(> form[class^="inputs-"]) {
         padding: 0;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.85rem;
+    }
+
+    .tax-sector-controls > .observablehq--block {
         grid-template-columns: minmax(0, 1fr);
         gap: 0.85rem;
     }
@@ -528,7 +569,8 @@ main.observablehq form[class^="inputs-"]:has(input[type="radio"]) > div > label:
 }
 
 .tax-line-shell,
-.tax-sector-stack-shell {
+.tax-sector-stack-shell,
+.tax-sector-composition-shell {
     position: relative;
     overflow-x: auto;
     overflow-y: hidden;
@@ -536,20 +578,23 @@ main.observablehq form[class^="inputs-"]:has(input[type="radio"]) > div > label:
 
 .tax-line-shell:focus-visible,
 .tax-sector-stack-shell:focus-visible,
+.tax-sector-composition-shell:focus-visible,
 .tax-streamgraph-shell:focus-visible {
     outline: 2px solid var(--pbo-accent-line);
     outline-offset: 3px;
 }
 
 .tax-line-shell svg,
-.tax-sector-stack-shell svg {
+.tax-sector-stack-shell svg,
+.tax-sector-composition-shell svg {
     display: block;
     width: 100%;
     height: auto;
 }
 
 .tax-line-grid line,
-.tax-sector-stack__grid line {
+.tax-sector-stack__grid line,
+.tax-sector-composition__grid line {
     stroke: var(--pbo-structure-border);
     stroke-width: 1px;
     opacity: 0.72;
@@ -626,6 +671,35 @@ main.observablehq form[class^="inputs-"]:has(input[type="radio"]) > div > label:
     stroke-linecap: round;
     stroke-linejoin: round;
     pointer-events: none;
+}
+
+.tax-sector-composition__segment {
+    stroke: var(--page-bg);
+    stroke-width: 1px;
+    cursor: crosshair;
+    transition: opacity 140ms ease, stroke-width 140ms ease;
+}
+
+.tax-sector-composition__segment.is-muted {
+    opacity: 0.14;
+}
+
+.tax-sector-composition__segment.is-highlighted,
+.tax-sector-composition__segment:focus-visible {
+    opacity: 1;
+    stroke: var(--text);
+    stroke-width: 2px;
+    outline: none;
+}
+
+.tax-sector-composition__baseline {
+    stroke: var(--border-strong);
+    stroke-width: 1.5px;
+    pointer-events: none;
+}
+
+.tax-streamgraph-legend.tax-sector-composition-legend {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .tax-sector-stack-legend {
@@ -725,7 +799,7 @@ main.observablehq form[class^="inputs-"]:has(input[type="radio"]) > div > label:
     gap: 0.2rem 1rem;
 }
 
-.tax-streamgraph__mobile-hint {
+.tax-chart__mobile-scroll-hint {
     display: none;
 }
 
@@ -934,17 +1008,22 @@ main.observablehq form[class^="inputs-"]:has(input[type="radio"]) > div > label:
     }
 
     .tax-line-shell svg,
-    .tax-sector-stack-shell svg {
+    .tax-sector-stack-shell svg,
+    .tax-sector-composition-shell svg {
         width: 720px;
         max-width: none;
     }
 
-    .tax-streamgraph__mobile-hint {
+    .tax-chart__mobile-scroll-hint {
         display: block;
-        margin: 0.55rem 0 0;
+        margin: 0 0 0.7rem;
     }
 
     .tax-streamgraph-legend {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .tax-streamgraph-legend.tax-sector-composition-legend {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }

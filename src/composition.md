@@ -72,6 +72,7 @@ display(compositionStreamgraph(rows, {mode: compositionMode}));
 </div>
 
 <div class="prose-block">
+    <p><strong>Income Taxes</strong> is a collective term for PAYE income tax and USC, self-assessed income tax and USC, Deposit Interest Retention Tax, Life Assurance Exit Tax, Professional Services Withholding Tax, Dividend Withholding Tax, Non-Resident Landlord Withholding Tax and other income taxes.</p>
   <p>Tax revenues vary due to changes in tax rates over time and may not reflect changes in underlying activity.</p>
   <p>Before the economic and financial crisis in 2008, <strong>consumption taxes</strong> and <strong>stamp duties</strong> accounted for a larger share of the tax base. Stamp Duty receipts are linked to transactions, including residential property transactions, and were therefore more exposed to changes in the volume and value of activity in the property market.</p>
 </div>

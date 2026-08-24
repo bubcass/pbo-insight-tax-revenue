@@ -1,7 +1,7 @@
 const tabs = [
   { id: "overview", label: "Overview", href: "./" },
   { id: "composition", label: "Composition", href: "./composition" },
-  { id: "geography", label: "Geography", href: "./geography" },
+  { id: "geography", label: "Location", href: "./geography" },
   { id: "sectors", label: "Sectors", href: "./sectors" },
 ];
 

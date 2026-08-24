@@ -1,5 +1,6 @@
 import * as d3 from "npm:d3";
 import {chartPalettes} from "../config/chart-palette.js";
+import {mobileTimelineScroll} from "./mobile-timeline-scroll.js";
 
 const COLORS = chartPalettes.pboCategorical;
 
@@ -9,7 +10,7 @@ export function sectorStackedArea(rows, {
   width = 1040,
   limit = 8,
   totalRows = null,
-  title = "How the sector mix changed"
+  title = "Sector mix"
 } = {}) {
   const filtered = rows.filter((d) => d.Tax_type === taxType && Number.isFinite(d.Amount));
   const years = Array.from(new Set(filtered.map((d) => d.Year))).sort(d3.ascending);
@@ -185,9 +186,7 @@ export function sectorStackedArea(rows, {
       }
     });
 
-  const hint = document.createElement("p");
-  hint.className = "tax-chart__note tax-streamgraph__mobile-hint";
-  hint.textContent = "Swipe horizontally to explore all years.";
+  const hint = mobileTimelineScroll(shell);
   const legend = document.createElement("div");
   legend.className = "tax-streamgraph-legend tax-sector-stack-legend";
   legend.setAttribute("aria-label", "Economic sector legend");
@@ -212,6 +211,6 @@ export function sectorStackedArea(rows, {
     ? `The ${limit} largest sectors across the series are shown separately. “Other sectors” comprises ${otherSectorList}. “Other receipts not classified by sector” reconciles the sector-attributable tax heads to total net Exchequer receipts. Negative sector amounts are netted through that residual band.`
     : `The ${limit} largest sectors across the series are shown separately. “Other sectors” comprises ${otherSectorList}. Negative net amounts are excluded from the stacked view.`;
   shell.append(svg.node(), tooltip);
-  figure.append(caption, shell, hint, legend, note);
+  figure.append(caption, hint, shell, legend, note);
   return figure;
 }

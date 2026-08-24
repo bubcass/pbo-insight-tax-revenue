@@ -39,6 +39,22 @@ export function waterfallSegmentsChart(
   const wrap = document.createElement("div");
   wrap.className = "waterfall-segments-chart-wrap";
 
+  if (title || caption) {
+    const heading = document.createElement("div");
+    heading.className = "tax-chart__heading";
+    if (title) {
+      const strong = document.createElement("strong");
+      strong.textContent = title;
+      heading.appendChild(strong);
+    }
+    if (caption) {
+      const span = document.createElement("span");
+      span.textContent = caption;
+      heading.appendChild(span);
+    }
+    wrap.appendChild(heading);
+  }
+
   const scrollHint = document.createElement("p");
   scrollHint.className = "waterfall-segments-chart__scroll-hint";
   scrollHint.textContent = "Scroll horizontally to explore →";
@@ -115,8 +131,6 @@ export function waterfallSegmentsChart(
     marginTop: 50,
     marginBottom: 28,
     grid: true,
-    title,
-    caption,
     style: {
       ...plotStyle(),
       fontFamily,

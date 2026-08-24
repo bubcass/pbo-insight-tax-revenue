@@ -1,6 +1,6 @@
 # PBO Tax Revenue Insights
 
-An Observable Framework resource exploring Ireland's net Exchequer tax receipts by tax head, geography and economic sector.
+An Observable Framework resource exploring Ireland's net Exchequer tax receipts by tax head, registration location and economic sector.
 
 Published at [bubcass.github.io/pbo-insight-tax-revenue](https://bubcass.github.io/pbo-insight-tax-revenue/).
 

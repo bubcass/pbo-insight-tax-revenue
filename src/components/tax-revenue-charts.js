@@ -2,6 +2,7 @@ import * as d3 from "npm:d3";
 import * as Plot from "npm:@observablehq/plot";
 import {chartPalettes} from "../config/chart-palette.js";
 import {chartStyle, plotStyle, responsivePlotWidth} from "../config/chart-style.js";
+import {mobileTimelineScroll} from "./mobile-timeline-scroll.js";
 import {sanitizePlotAccessibility} from "./plot-accessibility.js";
 
 const COLORS = chartPalettes.pboCategorical;
@@ -216,8 +217,11 @@ export function receiptTrend(rows, {taxhead, mode = "value", width = 1040} = {})
       shell.blur();
     }
   });
+  const mobileHint = mobileTimelineScroll(shell);
   shell.append(svg.node(), tooltip);
-  figure.insertBefore(shell, figure.querySelector(".tax-chart__note"));
+  const note = figure.querySelector(".tax-chart__note");
+  figure.insertBefore(mobileHint, note);
+  figure.insertBefore(shell, note);
   return figure;
 }
 

@@ -72,6 +72,15 @@ export const chartPalettes = Object.freeze({
   ]),
 });
 
+// Stable semantic colours for tax types. Define these once so charts that
+// compare tax components use the same colour language throughout the site.
+export const pboTaxTypeColors = Object.freeze({
+  "Capital Gains Tax": "var(--pbo-tax-capital-gains, #6b1448)",
+  "Corporation Tax": "var(--pbo-tax-corporation, #ffbb00)",
+  "Income Taxes": "var(--pbo-tax-income, #ff6f61)",
+  VAT: "var(--pbo-tax-vat, #008080)",
+});
+
 // Change value to apply a palette to categorical charts site-wide.
 export const chartPaletteName = "default";
 

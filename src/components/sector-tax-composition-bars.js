@@ -16,7 +16,7 @@ export function sectorTaxCompositionBars(rows, {
   sector,
   mode = "value",
   width = 1040,
-  title = "How the selected sector's tax mix changed",
+  title = "Tax breakdown by sector",
 } = {}) {
   const filtered = rows.filter((d) => d.Sector === sector && Number.isFinite(d.Amount));
   const years = Array.from(new Set(filtered.map((d) => d.Year))).sort(d3.ascending);
@@ -72,7 +72,9 @@ export function sectorTaxCompositionBars(rows, {
 
   const svg = d3.create("svg")
     .attr("viewBox", `0 0 ${width} ${height}`)
-    .attr("role", "img")
+    // The bar segments are keyboard-focusable controls, so the SVG is an
+    // accessible group rather than a static image with nested buttons.
+    .attr("role", "group")
     .attr("aria-label", `Stacked column chart showing the tax composition of ${sector} from ${years.at(0)} to ${years.at(-1)}`);
   svg.append("desc").text("Each column is one year and each coloured segment is a tax type. Negative net receipts extend below zero.");
 

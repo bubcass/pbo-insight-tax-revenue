@@ -84,7 +84,9 @@ export function sectorStackedArea(rows, {
   shell.tabIndex = 0;
   const svg = d3.create("svg")
     .attr("viewBox", `0 0 ${width} ${height}`)
-    .attr("role", "img")
+    // This SVG contains keyboard-focusable series controls, so expose it as
+    // a group rather than a static image. An image role cannot own buttons.
+    .attr("role", "group")
     .attr("aria-label", `Stacked area chart of ${taxType.toLowerCase()} receipts by economic sector from ${years.at(0)} to ${years.at(-1)}`);
   svg.append("g")
     .attr("class", "tax-sector-stack__grid tax-sector-stack__grid--x")

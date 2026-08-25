@@ -65,7 +65,9 @@ export function compositionStreamgraph(rows, {mode = "value", width = 1040} = {}
   shell.tabIndex = 0;
   const svg = d3.create("svg")
     .attr("viewBox", `0 0 ${width} ${height}`)
-    .attr("role", "img")
+    // The focusable bands are controls; role="img" would hide those
+    // descendants from some accessibility APIs and creates nested controls.
+    .attr("role", "group")
     .attr("aria-label", `Streamgraph showing ${mode === "share" ? "the share" : "the value"} of Ireland's tax receipts by tax head from ${d3.min(years)} to ${d3.max(years)}`);
   svg.append("desc").text("Each band represents one tax head. The thickness of a band shows its value in each year. Hover or focus a band for exact values.");
 

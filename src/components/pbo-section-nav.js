@@ -1,8 +1,8 @@
 const tabs = [
   { id: "overview", label: "Overview", href: "./" },
   { id: "composition", label: "Composition", href: "./composition" },
-  { id: "geography", label: "Location", href: "./geography" },
   { id: "sectors", label: "Sectors", href: "./sectors" },
+  { id: "geography", label: "Location", href: "./geography" },
 ];
 
 let tabsInstance = 0;

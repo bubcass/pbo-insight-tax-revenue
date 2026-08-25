@@ -7,7 +7,7 @@ toc: false
 ---
 
 ```js
-import * as d3 from "npm:d3";
+import * as d3 from "npm:d3@7.9.0";
 import {downloadButton} from "./components/download-button.js";
 import {compositionStreamgraph} from "./components/tax-composition-streamgraph.js";
 import {pboSectionNav} from "./components/pbo-section-nav.js";

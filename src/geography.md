@@ -1,5 +1,5 @@
 ---
-title: "Tax Revenue by Location"
+title: "Tax Revenue Location"
 header: false
 sidebar: false
 footer: false
@@ -7,7 +7,7 @@ toc: false
 ---
 
 ```js
-import * as d3 from "npm:d3";
+import * as d3 from "npm:d3@7.9.0";
 import {downloadButton} from "./components/download-button.js";
 import {chartPalettes} from "./config/chart-palette.js";
 import {waterfallSegmentsChart} from "./components/waterfall-segments-chart.js";

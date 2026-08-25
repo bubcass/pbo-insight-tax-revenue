@@ -399,6 +399,7 @@ export default {
   root: "src",
   style: "style.css",
   theme: null,
+  globalStylesheets: [],
   sidebar: false,
   toc: false,
   pager: false,

@@ -1,5 +1,5 @@
 ---
-title: "Tax Revenue by Sector"
+title: "Tax Revenue Sector"
 header: false
 sidebar: false
 footer: false
@@ -7,7 +7,7 @@ toc: false
 ---
 
 ```js
-import * as d3 from "npm:d3";
+import * as d3 from "npm:d3@7.9.0";
 import {downloadButton} from "./components/download-button.js";
 import {sectorTaxCompositionBars} from "./components/sector-tax-composition-bars.js";
 import {sectorStackedArea} from "./components/tax-sector-stacked.js";

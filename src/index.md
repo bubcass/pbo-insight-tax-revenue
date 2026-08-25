@@ -7,7 +7,7 @@ toc: false
 ---
 
 ```js
-import * as d3 from "npm:d3";
+import * as d3 from "npm:d3@7.9.0";
 import {downloadButton} from "./components/download-button.js";
 import {pboSectionNav} from "./components/pbo-section-nav.js";
 import {sectorStackedArea} from "./components/tax-sector-stacked.js";

@@ -1,13 +1,22 @@
 import fs from "node:fs/promises";
+import {createHash} from "node:crypto";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {csvParse} from "d3-dsv";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const dataDir = path.resolve(__dirname, "..");
 const derivedDir = path.join(dataDir, "derived");
+const args = process.argv.slice(2);
+const check = args.includes("--check");
+if (args.some((argument) => argument !== "--check")) {
+  throw new Error(`Unknown option: ${args.find((argument) => argument !== "--check")}`);
+}
 
-function toNumber(value) {
-  const num = Number(value);
+function toNumber(value, {nullable = false} = {}) {
+  const text = String(value ?? "").trim();
+  if (nullable && (!text || text.toUpperCase() === "NA")) return null;
+  const num = Number(text);
   return Number.isFinite(num) ? num : null;
 }
 
@@ -21,27 +30,49 @@ function normaliseCountyName(value) {
     .toUpperCase();
 }
 
-async function readCsv(name) {
+async function readCsv(name, requiredColumns) {
   const text = await fs.readFile(path.join(dataDir, name), "utf8");
-  const [headerLine, ...lines] = text.trim().split(/\r?\n/);
-  const headers = headerLine.split(",");
+  const parsed = csvParse(text.replace(/^\uFEFF/, ""));
+  const missing = requiredColumns.filter((column) => !parsed.columns.includes(column));
+  if (missing.length) throw new Error(`${name} is missing columns: ${missing.join(", ")}`);
 
-  return lines.map((line) => {
-    const cells = line.match(/(".*?"|[^",\s]+|[^,]+)(?=\s*,|\s*$)/g) ?? [];
+  const rows = parsed.map((input, index) => {
     const row = Object.fromEntries(
-      headers.map((header, index) => {
-        const raw = (cells[index] ?? "").replace(/^"|"$/g, "").replace(/""/g, "\"");
-        if (header === "Year" || header === "Amount") return [header, toNumber(raw)];
-        return [header, raw];
+      requiredColumns.map((column) => {
+        const value = String(input[column] ?? "").trim();
+        if (column === "Year") return [column, toNumber(value)];
+        if (column === "Amount") {
+          const amount = toNumber(value, {nullable: true});
+          if (amount === null && value && value.toUpperCase() !== "NA") {
+            throw new Error(`${name} row ${index + 2} has an invalid Amount`);
+          }
+          return [column, amount];
+        }
+        return [column, value];
       }),
     );
+    if (!Number.isFinite(row.Year) || (row.Amount !== null && !Number.isFinite(row.Amount))) {
+      throw new Error(`${name} row ${index + 2} has an invalid Year or Amount`);
+    }
+    for (const column of requiredColumns.filter((column) => !["Year", "Amount"].includes(column))) {
+      if (!row[column]) throw new Error(`${name} row ${index + 2} has an empty ${column}`);
+    }
     return row;
   });
+
+  if (!rows.length) throw new Error(`${name} contains no data rows`);
+  return {
+    rows,
+    sha256: createHash("sha256").update(text).digest("hex"),
+  };
 }
 
-const taxheadRows = await readCsv("net-receipts-taxhead.csv");
-const sectorRows = await readCsv("net-receipts-sector.csv");
-const countyRows = await readCsv("net-receipts-county.csv");
+const taxhead = await readCsv("net-receipts-taxhead.csv", ["Year", "Taxhead", "Amount"]);
+const sector = await readCsv("net-receipts-sector.csv", ["Year", "Sector", "Tax_type", "Amount"]);
+const county = await readCsv("net-receipts-county.csv", ["County", "Year", "Tax_type", "Amount"]);
+const taxheadRows = taxhead.rows;
+const sectorRows = sector.rows;
+const countyRows = county.rows;
 
 const groupedByYear = new Map();
 for (const row of taxheadRows) {
@@ -70,7 +101,6 @@ const taxheads = [...new Set(taxheadRows.map((d) => d.Taxhead).filter(Boolean))]
 const sectors = [...new Set(sectorRows.map((d) => d.Sector).filter(Boolean))].sort();
 
 const metadata = {
-  generated_at: new Date().toISOString(),
   years: {
     min_taxhead_year: Math.min(...taxheadRows.map((d) => d.Year).filter(Number.isFinite)),
     max_taxhead_year: Math.max(...taxheadRows.map((d) => d.Year).filter(Number.isFinite)),
@@ -87,17 +117,49 @@ const metadata = {
     "net-receipts-county.csv",
     "geo/counties.geojson",
   ],
+  source_sha256: {
+    "net-receipts-taxhead.csv": taxhead.sha256,
+    "net-receipts-sector.csv": sector.sha256,
+    "net-receipts-county.csv": county.sha256,
+  },
   county_normalisation_example: normaliseCountyName("County Dublin"),
 };
 
-await fs.mkdir(derivedDir, { recursive: true });
-await fs.writeFile(
-  path.join(derivedDir, "net-receipts-share.json"),
-  JSON.stringify(shares, null, 2) + "\n",
-);
-await fs.writeFile(
-  path.join(derivedDir, "metadata.json"),
-  JSON.stringify(metadata, null, 2) + "\n",
+const outputs = [
+  output("net-receipts-taxhead.json", tabular(taxheadRows, ["Year", "Taxhead", "Amount"])),
+  output("net-receipts-sector.json", tabular(sectorRows, ["Year", "Sector", "Tax_type", "Amount"])),
+  output("net-receipts-county.json", tabular(countyRows, ["County", "Year", "Tax_type", "Amount"])),
+  output("net-receipts-share.json", shares, true),
+  output("metadata.json", metadata, true),
+];
+
+if (check) {
+  const stale = [];
+  for (const item of outputs) {
+    const current = await fs.readFile(item.path, "utf8").catch((error) => {
+      if (error?.code === "ENOENT") return null;
+      throw error;
+    });
+    if (current !== item.text) stale.push(path.basename(item.path));
+  }
+  if (stale.length) throw new Error(`Derived tax data is missing or stale:\n- ${stale.join("\n- ")}`);
+} else {
+  await fs.mkdir(derivedDir, { recursive: true });
+  await Promise.all(outputs.map((item) => fs.writeFile(item.path, item.text, "utf8")));
+}
+
+console.log(
+  `${check ? "Verified" : "Wrote"} ${taxheadRows.length + sectorRows.length + countyRows.length} browser rows, ` +
+  `${shares.length} share rows and metadata to ${derivedDir}`,
 );
 
-console.log(`Wrote ${shares.length} share rows and metadata to ${derivedDir}`);
+function output(name, value, pretty = false) {
+  return {
+    path: path.join(derivedDir, name),
+    text: `${JSON.stringify(value, null, pretty ? 2 : 0)}\n`,
+  };
+}
+
+function tabular(rows, columns) {
+  return {columns, rows: rows.map((row) => columns.map((column) => row[column]))};
+}

@@ -4,12 +4,13 @@
   "packageManager": "npm@10.9.2",
   "scripts": {
     "build:data": "node src/data/transformers/build-tax-derived.mjs",
+    "check:data": "node src/data/transformers/build-tax-derived.mjs --check",
     "build": "observable build",
     "dev": "observable preview",
     "observable": "observable",
     "security:audit": "npm audit --audit-level=critical",
     "security:runtime": "npm audit --omit=dev --audit-level=high",
-    "verify": "npm run build && npm run security:runtime"
+    "verify": "npm run check:data && npm run build && npm run security:runtime"
   },
   "devDependencies": {
     "@observablehq/framework": "1.13.4",

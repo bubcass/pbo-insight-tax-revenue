@@ -13,8 +13,9 @@ import {chartPalettes} from "./config/chart-palette.js";
 import {waterfallSegmentsChart} from "./components/waterfall-segments-chart.js";
 import {pboSectionNav} from "./components/pbo-section-nav.js";
 import {taxHero} from "./components/tax-page.js";
+import {tabularRows} from "./components/tabular-data.js";
 
-const rows = await FileAttachment("data/net-receipts-county.csv").csv({typed: true});
+const rows = tabularRows(await FileAttachment("data/derived/net-receipts-county.json").json());
 const heroImage = await FileAttachment("media/tax-revenue-hero.jpg").url();
 const years = Array.from(new Set(rows.map((d) => d.Year))).sort(d3.descending);
 const taxTypes = ["Total", "Income Taxes", "Corporation Tax", "VAT", "Capital Gains Tax"];

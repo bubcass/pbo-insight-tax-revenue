@@ -1,5 +1,4 @@
 {
-  "generated_at": "2026-07-09T19:10:09.155Z",
   "years": {
     "min_taxhead_year": 2005,
     "max_taxhead_year": 2025,
@@ -53,5 +52,10 @@
     "net-receipts-county.csv",
     "geo/counties.geojson"
   ],
+  "source_sha256": {
+    "net-receipts-taxhead.csv": "c5fb1c499271d565b18f76ef748534115aa4247ba7b0de9f168cd0f43bdaa8ba",
+    "net-receipts-sector.csv": "5d3362d39d497e54342b4bf150fc49e2e05160b1fdcfdb88c893cbb59deac632",
+    "net-receipts-county.csv": "31dcd0825d9a4c7603f82001155d7f306952baac6981a36067698e3868870b31"
+  },
   "county_normalisation_example": "DUBLIN"
 }

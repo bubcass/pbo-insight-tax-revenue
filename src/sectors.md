@@ -13,8 +13,9 @@ import {sectorTaxCompositionBars} from "./components/sector-tax-composition-bars
 import {sectorStackedArea} from "./components/tax-sector-stacked.js";
 import {pboSectionNav} from "./components/pbo-section-nav.js";
 import {taxHero} from "./components/tax-page.js";
+import {tabularRows} from "./components/tabular-data.js";
 
-const rows = await FileAttachment("data/net-receipts-sector.csv").csv({typed: true});
+const rows = tabularRows(await FileAttachment("data/derived/net-receipts-sector.json").json());
 const heroImage = await FileAttachment("media/tax-revenue-hero.jpg").url();
 const years = Array.from(new Set(rows.map((d) => d.Year))).sort(d3.descending);
 const latestYear = d3.max(years);

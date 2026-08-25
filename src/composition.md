@@ -12,8 +12,9 @@ import {downloadButton} from "./components/download-button.js";
 import {compositionStreamgraph} from "./components/tax-composition-streamgraph.js";
 import {pboSectionNav} from "./components/pbo-section-nav.js";
 import {taxHero} from "./components/tax-page.js";
+import {tabularRows} from "./components/tabular-data.js";
 
-const rows = await FileAttachment("data/net-receipts-taxhead.csv").csv({typed: true});
+const rows = tabularRows(await FileAttachment("data/derived/net-receipts-taxhead.json").json());
 const heroImage = await FileAttachment("media/tax-revenue-hero.jpg").url();
 const latestYear = d3.max(rows, (d) => d.Year);
 const latestDetail = rows.filter((d) => d.Year === latestYear && d.Taxhead !== "Total Net Receipts");

@@ -12,9 +12,10 @@ import {downloadButton} from "./components/download-button.js";
 import {pboSectionNav} from "./components/pbo-section-nav.js";
 import {sectorStackedArea} from "./components/tax-sector-stacked.js";
 import {taxHero} from "./components/tax-page.js";
+import {tabularRows} from "./components/tabular-data.js";
 
-const rows = await FileAttachment("data/net-receipts-taxhead.csv").csv({typed: true});
-const sectorRows = await FileAttachment("data/net-receipts-sector.csv").csv({typed: true});
+const rows = tabularRows(await FileAttachment("data/derived/net-receipts-taxhead.json").json());
+const sectorRows = tabularRows(await FileAttachment("data/derived/net-receipts-sector.json").json());
 const heroImage = await FileAttachment("media/tax-revenue-hero.jpg").url();
 const years = Array.from(new Set(rows.map((d) => d.Year))).sort(d3.ascending);
 const latestYear = d3.max(years);

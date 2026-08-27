@@ -19,14 +19,21 @@ const heroImage = await FileAttachment("media/tax-revenue-hero.jpg").url();
 const latestYear = d3.max(rows, (d) => d.Year);
 const latestDetail = rows.filter((d) => d.Year === latestYear && d.Taxhead !== "Total Net Receipts");
 const latestTotal = d3.sum(latestDetail, (d) => d.Amount);
-const incomeAndCorporation = d3.sum(latestDetail.filter((d) => ["Income Taxes", "Corporation Tax"].includes(d.Taxhead)), (d) => d.Amount);
-const incomeAndCorporationShare = (year) => {
+const incomeTaxes = d3.sum(latestDetail.filter((d) => d.Taxhead === "Income Taxes"), (d) => d.Amount);
+const corporationTax = d3.sum(latestDetail.filter((d) => d.Taxhead === "Corporation Tax"), (d) => d.Amount);
+const incomeAndCorporation = incomeTaxes + corporationTax;
+const taxheadShare = (year, taxhead) => {
   const detail = rows.filter((d) => d.Year === year && d.Taxhead !== "Total Net Receipts" && Number.isFinite(d.Amount));
   const total = d3.sum(detail, (d) => d.Amount);
-  const combined = d3.sum(detail.filter((d) => ["Income Taxes", "Corporation Tax"].includes(d.Taxhead)), (d) => d.Amount);
-  return total ? combined / total : 0;
+  const amount = detail.find((d) => d.Taxhead === taxhead)?.Amount ?? 0;
+  return total ? amount / total : 0;
 };
-const latestCombinedShare = incomeAndCorporationShare(latestYear);
+const fiveYearComparisonYear = latestYear - 5;
+const latestIncomeTaxShare = taxheadShare(latestYear, "Income Taxes");
+const fiveYearIncomeTaxShare = taxheadShare(fiveYearComparisonYear, "Income Taxes");
+const latestCorporationTaxShare = taxheadShare(latestYear, "Corporation Tax");
+const fiveYearCorporationTaxShare = taxheadShare(fiveYearComparisonYear, "Corporation Tax");
+const euroBillions = (value) => `€${d3.format(".1f")(value / 1000)} billion`;
 ```
 
 ```js
@@ -42,23 +49,26 @@ display(pboSectionNav("composition"));
   <p>The mix of tax type receipts may vary significantly but taken as a high-level indicator it can be a useful bellwether of tax base stability.</p>
 </div>
 
-<div class="tax-insight-callout tax-insight-callout--compact">
+<div class="tax-insight-callout tax-insight-callout--compact tax-insight-callout--split">
   <p class="tax-insight-callout__label">At a glance</p>
   <h2>Income taxes and corporation tax provided ${d3.format(".0%")(incomeAndCorporation / latestTotal)} of detailed net receipts in ${latestYear}.</h2>
-  <p class="tax-insight-comparisons__context">Income and corporation taxes tend to combine to form the largest share of detailed net receipts</p>
-  <dl class="tax-insight-comparisons tax-insight-comparisons--two">
-    <div class="tax-insight-comparisons__item">
-      <dt>Past 5 years</dt>
-      <dd class="tax-insight-comparisons__value">${d3.format(".0%")(incomeAndCorporationShare(latestYear - 5))} → ${d3.format(".0%")(latestCombinedShare)}</dd>
-      <dd class="tax-insight-comparisons__detail">+${d3.format(".1f")((latestCombinedShare - incomeAndCorporationShare(latestYear - 5)) * 100)} percentage points since ${latestYear - 5}</dd>
-    </div>
-    <div class="tax-insight-comparisons__item">
-      <dt>Past 10 years</dt>
-      <dd class="tax-insight-comparisons__value">${d3.format(".0%")(incomeAndCorporationShare(latestYear - 10))} → ${d3.format(".0%")(latestCombinedShare)}</dd>
-      <dd class="tax-insight-comparisons__detail">+${d3.format(".1f")((latestCombinedShare - incomeAndCorporationShare(latestYear - 10)) * 100)} percentage points since ${latestYear - 10}</dd>
-    </div>
-  </dl>
+  <p><strong>Income taxes contributed ${euroBillions(incomeTaxes)}</strong> and <strong>corporation tax contributed ${euroBillions(corporationTax)}</strong>. Together, they accounted for ${euroBillions(incomeAndCorporation)} of ${euroBillions(latestTotal)} in detailed net receipts.</p>
 </div>
+
+<section class="insights-summary composition-comparison-metrics" aria-label="Five-year changes in income-tax and corporation-tax shares of detailed net receipts">
+  <div class="metrics-grid" data-count="2">
+    <article class="metric-card">
+      <p class="metric-card__label">Income taxes · Past 5 years</p>
+      <p class="metric-card__value">${d3.format(".0%")(fiveYearIncomeTaxShare)} → ${d3.format(".0%")(latestIncomeTaxShare)}</p>
+      <p class="metric-card__note">${d3.format("+.1f")((latestIncomeTaxShare - fiveYearIncomeTaxShare) * 100)} percentage points since ${fiveYearComparisonYear}</p>
+    </article>
+    <article class="metric-card">
+      <p class="metric-card__label">Corporation tax · Past 5 years</p>
+      <p class="metric-card__value">${d3.format(".0%")(fiveYearCorporationTaxShare)} → ${d3.format(".0%")(latestCorporationTaxShare)}</p>
+      <p class="metric-card__note">${d3.format("+.1f")((latestCorporationTaxShare - fiveYearCorporationTaxShare) * 100)} percentage points since ${fiveYearComparisonYear}</p>
+    </article>
+  </div>
+</section>
 
 ```js
 const compositionMode = view(Inputs.radio(new Map([["Value (€)", "value"], ["Share (%)", "share"]]), {value: "value"}));

@@ -80,7 +80,7 @@ export default {
           assetUrl.search = "";
           assetUrl.hash = "";
           const brandTitle = "PBO Insights";
-          resourceLink.href = "https://bubcass.github.io/open-data-insights/";
+          resourceLink.href = "https://bubcass.github.io/open-data-insights/#pbo-heading";
           resourceLink.setAttribute("aria-label", "Return to the Insights collection");
 
           const insightsBrandMarkup = \`

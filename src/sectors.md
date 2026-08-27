@@ -26,6 +26,12 @@ function signedPercentagePoints(value) {
   const sign = value > 0 ? "+" : value < 0 ? "−" : "";
   return `${sign}${d3.format(".1f")(Math.abs(value) * 100)} percentage points`;
 }
+
+function formatSectorValue(value) {
+  return Math.abs(value) >= 1000
+    ? `${value < 0 ? "−" : ""}€${d3.format(".1f")(Math.abs(value) / 1000)}bn`
+    : `${value < 0 ? "−" : ""}€${d3.format(",.0f")(Math.abs(value))}m`;
+}
 ```
 
 ```js
@@ -76,7 +82,7 @@ const tenYearComparison = sectorLookback(10);
 <div class="tax-insight-callout tax-insight-callout--compact">
   <p class="tax-insight-callout__label">At a glance</p>
   <h2>${largestSectorLabel} recorded the largest sector total for ${sectorTaxPhrase} receipts in ${latestYear}.</h2>
-  <p class="tax-insight-comparisons__context">${largestSectorLabel}'s share of net ${sectorTaxPhrase} receipts recorded across sectors</p>
+  <p class="tax-insight-comparisons__context"><strong>${formatSectorValue(largestSector?.Amount ?? 0)}</strong> in net ${sectorTaxPhrase} receipts, representing ${d3.format(".1%")(largestSector?.Amount / selectedTotal)} of the amount recorded across sectors.</p>
   <dl class="tax-insight-comparisons tax-insight-comparisons--two">
     <div class="tax-insight-comparisons__item">
       <dt>Past 5 years</dt>
@@ -135,9 +141,6 @@ const compositionLargestComponent = d3.greatest(
   compositionLatestRows.filter((d) => d.Tax_type !== "Total"),
   (d) => d.Amount
 );
-const formatSectorValue = (value) => Math.abs(value) >= 1000
-  ? `${value < 0 ? "−" : ""}€${d3.format(".1f")(Math.abs(value) / 1000)}bn`
-  : `${value < 0 ? "−" : ""}€${d3.format(",.0f")(Math.abs(value))}m`;
 ```
 
 <div class="tax-insight-callout tax-insight-callout--compact">

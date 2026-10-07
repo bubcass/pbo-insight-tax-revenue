@@ -206,8 +206,8 @@ button {
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    width: 72px;
-    height: 31px;
+    width: 84px;
+    height: 36px;
     color: var(--text);
     transform: translateY(-0.05em);
 }

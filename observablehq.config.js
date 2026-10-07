@@ -86,7 +86,7 @@ export default {
           resourceLink.setAttribute("aria-label", "Return to the Insights collection");
 
           const insightsBrandMarkup = \`
-            <span class="oireachtas-masthead__brand-mark" aria-hidden="true"><svg viewBox="0 0 1092 526" focusable="false"><use href="\${houseSrc}#house-lockup" /></svg></span>
+            <span class="oireachtas-masthead__brand-mark" aria-hidden="true"><svg viewBox="0 0 1092 526" focusable="false"><use href="\${houseSrc}#house-lockup" fill="currentColor" /></svg></span>
             <span class="oireachtas-masthead__brand-copy">
               <span class="oireachtas-masthead__brand-title">\${brandTitle}</span>
               <span class="oireachtas-masthead__brand-tagline">Parliamentary visual data</span>
